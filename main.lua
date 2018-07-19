@@ -2,7 +2,7 @@
 local AceGUI = LibStub("AceGUI-3.0");
 
 function RecrutementEuphorie:IsAuthority()
-	return UnitName("player") == "Putrebifle";
+	return UnitName("player") == "Sindalar";
 end
 
 RecrutementEuphorie_MACRO_NAME = "Recrut. Euphorïe";
@@ -11,12 +11,12 @@ RecrutementEuphorie_UPDATE_BROADCAST_PAYLOAD_PREFIX = "RE_U_PAYLOAD";
 RecrutementEuphorie_REQUEST_BROADCAST_PAYLOAD_PREFIX = "RE_R_PAYLOAD";
 
 function RecrutementEuphorie:SendRequest() 
-	RecrutementEuphorie:SendCommMessage(RecrutementEuphorie_REQUEST_BROADCAST_PAYLOAD_PREFIX, "", "GUILD");
+	RecrutementEuphorie:SendCommMessage(RecrutementEuphorie_REQUEST_BROADCAST_PAYLOAD_PREFIX, "request", "GUILD");
 end
 
 function RecrutementEuphorie:PLAYER_ENTERING_WORLD()
 	if GetMacroIndexByName(RecrutementEuphorie_MACRO_NAME) == 0 then
-		macroId= CreateMacro(RecrutementEuphorie_MACRO_NAME, "ability_warrior_rallyingcry", "/run RecrutementEuphorie:MacroClicked();", nil)
+		macroId = CreateMacro(RecrutementEuphorie_MACRO_NAME, "ability_warrior_rallyingcry", "/run RecrutementEuphorie:MacroClicked();", nil)
 		if macroId == 0 then
 			RecrutementEuphorie:Print("Erreur lors de l'ajout de la macro !");
 		else
@@ -95,7 +95,6 @@ function RecrutementEuphorie:On_REMESSAGE()
 	if RecrutementEuphoriePayloadRevision == nil or RecrutementEuphoriePayloadRevision == 0 then
 		RecrutementEuphorie:Print("Aucun message de recrutement enregistré, veuillez patienter qu'un joueur qui le possède se connecte.");
 	else
-		RecrutementEuphorie:Print("Message de recrutement : " .. RecrutementEuphoriePayloadMessage);
 		RecrutementEuphorie:Print("Message de recrutement : " .. RecrutementEuphoriePayloadMessage);
 	end
 end
