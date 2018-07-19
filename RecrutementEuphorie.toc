@@ -1,0 +1,11 @@
+## Interface: 80000
+## Version: 1.1
+## Title: Recrutement Euphorie
+## Author: natinusala
+## Notes: Addon de recrutement pour la guilde Euphorie
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
+## SavedVariables: RecrutementEuphoriePayloadRevision, RecrutementEuphoriePayloadMessage
+
+embeds.xml
+main.lua
