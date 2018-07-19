@@ -1,5 +1,7 @@
 # wow-smart-recruitment-macro
-A decentralized WoW guild recruitment macro which doesn't suck - the GM updates it, it spreads to everyone
+A decentralized WoW guild recruitment macro which doesn't suck - the GM updates it, it spreads to everyone.
+
+**The addon worked in Legion, it might require extra work to port it to BFA**
 
 ## Warning
 
