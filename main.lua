@@ -1,8 +1,21 @@
 ﻿RecrutementEuphorie = LibStub("AceAddon-3.0"):NewAddon("RecrutementEuphorie", "AceConsole-3.0", "AceEvent-3.0", "AceComm-3.0", "AceTimer-3.0");
 local AceGUI = LibStub("AceGUI-3.0");
 
+-- Change this list to set the authorized characters
+authorityList = { "Sindalar", "Yheron", "Choupsï", "Lynandrel" }
+
+
+local function has_value (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+    return false
+end
+
 function RecrutementEuphorie:IsAuthority()
-	return UnitName("player") == "Sindalar";
+	return has_value(authorityList, UnitName("player"));
 end
 
 RecrutementEuphorie_MACRO_NAME = "Recrut. Euphorïe";
@@ -26,9 +39,9 @@ function RecrutementEuphorie:PLAYER_ENTERING_WORLD()
 	
 	RecrutementEuphorie:SendUpdate(false);
 	
-	if not RecrutementEuphorie:IsAuthority() then
-		RecrutementEuphorie:ScheduleTimer("SendRequest", 5);
-	end
+	--if not RecrutementEuphorie:IsAuthority() then
+	RecrutementEuphorie:ScheduleTimer("SendRequest", 5);
+	--end
 end
 
 function RecrutementEuphorie:SerializePayload()
@@ -57,7 +70,7 @@ function RecrutementEuphorie:On_REUPDATE()
 		
 		editbox:SetCallback("OnEnterPressed", function(widget, event, text) 
 												if RecrutementEuphoriePayloadRevision == nil then RecrutementEuphoriePayloadRevision = 0; end
-												RecrutementEuphoriePayloadRevision = RecrutementEuphoriePayloadRevision + 1;
+												RecrutementEuphoriePayloadRevision = GetServerTime();
 												RecrutementEuphoriePayloadMessage = text;
 												RecrutementEuphorie:Print("Message mis à jour (nouvelle révision : " .. RecrutementEuphoriePayloadRevision .. ")");
 												RecrutementEuphorie:SendUpdate(true); 
@@ -113,7 +126,7 @@ function RecrutementEuphorie:On_REQUEST_BROADCAST_PAYLOAD(prefix, message, distr
 end
 
 function RecrutementEuphorie:On_UPDATE_BROADCAST_PAYLOAD(prefix, message, distribution, sender)
-	if RecrutementEuphorie:IsAuthority() then return; end
+	--if RecrutementEuphorie:IsAuthority() then return; end
 	revision, message = RecrutementEuphorie:DeserializePayload(message);
 		
 	if (RecrutementEuphoriePayloadRevision == nil or tonumber(revision) > tonumber(RecrutementEuphoriePayloadRevision)) then
