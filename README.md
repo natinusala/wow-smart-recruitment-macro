@@ -11,18 +11,20 @@ This addon is from my old guild Euphorie, hence the name, `RecrutementEuphorie`.
 
 ## How does this work ?
 
-Each copy of the addon keeps the current macro message locally. One guy (the "authority") is in charge and can update it, he's the only one allowed to do so.
+Each copy of the addon keeps the current macro message locally. One or many guys (the "authorities") are in charge and can update it, they're the only one allowed to do so.
 
 As soon as a player comes online with an outdated messages, it grabs the latest available from the online guildmates. As soon as a player comes online, their message is spread to every other players in case their copy of the message is outdated.
 
 This allow authorities to update the message from a nice GUI, and it will spread gently across all players as they come online. No pain, no hassle, always up to date.
 
+The revision system now works with server timestamps which means that the last updated message will always be the message spread to other players (even with multiple authorities).
+
 ## Usage
 
-0. Edit the addon (`main.lua`, line 5) to change the authority name
+0. Edit the addon (`main.lua`, line 5) to change the authority name (one or more)
 1. Share the addon to all your players
 2. Upon installation, the addon will create a macro, click on it to post the message in your /2
-3. The authority can now use `/reupdate` to open a GUI and update the current message
+3. Authorities can now use `/reupdate` to open a GUI and update the current message
 
 ## Commands
 
