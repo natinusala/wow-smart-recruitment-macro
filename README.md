@@ -1,6 +1,8 @@
 # wow-smart-recruitment-macro
 A decentralized WoW guild recruitment macro which doesn't suck - the GM updates it, it spreads to everyone
 
+**The addon is now entirely working for BfA and will be updated in future patches.**
+
 ## Warning
 
 This addon is from my old guild Euphorie, hence the name, `RecrutementEuphorie`. Also, it's in french, deal with it.
